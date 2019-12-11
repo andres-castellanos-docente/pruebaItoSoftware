@@ -1,0 +1,113 @@
+﻿<div class="content-sectionpadlow marginauto">
+    <div class="marginauto " [@subirAnimationWait]>
+        <div class="marginauto contenwhitebot boxs">
+            <div class="marginauto roles">
+                <div>
+                    <h3>{{ 'rol.Roles' | translate }}</h3>
+       
+                        <div class="marginauto contenwhitebot boxs flexcontent">
+                                <div class="p-md-4 flexcontent">
+                                        <form [formGroup]="regConsulta" autocomplete="off" >
+                                            <mat-form-field 
+                                                            [ngClass]="{ 'ng-invalid mat-form-field-invalid': submittedRol && formConsulta.nombreRol.errors }">
+                                                <input matInput type="text" formControlName="nombreRol"
+                                                    autocomplete="off"
+                                                    autocorrect="off" [maxLength]="40" spellcheck="false"
+                                                    placeholder="Nombre Rol"
+                                                    class=" ui-inputtext ui-inputcust ui-widget ui-input ui-inputdob">
+                                            </mat-form-field> 
+                                        </form>
+                                <div class="paddingtop14">
+                                        <button (click)="buscarNombreRol()"
+                                        class="ui-button ui-widget ui-corner-all ui-button-text-only ui-button-padding ui-buttongray">Consultar</button>
+                                <button (click)="limpiarRol()"
+                                class="ui-button ui-widget ui-corner-all ui-button-text-only ui-button-padding ui-buttongray">Limpiar</button>
+                                <button (click)="crearRol()"
+                                class="ui-button ui-widget ui-corner-all ui-button-text-only ui-button-padding ui-buttongray">Crear</button>
+                                </div>
+                                </div>     
+                        </div>
+                    <div class="paddingtop10">
+                    <table>
+                            <tr>
+                                    <th style="width:280px"> Nombre</th>
+                                    <th style="width:310px">  Descripcion</th>
+                                    <th style="width:60px">  Estado</th>
+                                    <th style="width:60px"> Acción</th>
+                            </tr>
+                    </table>
+                    <table>
+                    <p-dataView [value]="roles" [paginator]="true" [rows]="10">                    
+                        <ng-template let-rol pTemplate="listItem">
+                      
+                                <tr>
+                                    <td style="width:280px">  {{rol.nombre}}</td>
+                                    <td style="width:310px">  {{rol.descripcion}}</td>
+                                    <td style="width:60px">  {{rol.activo}}</td>
+                                    <td style="width:60px">  <button (click)="editarRol(rol)"
+                                        class="ui-button ui-widget ui-corner-all ui-button-text-only ui-button-padding ui-buttongray">Editar</button></td>
+                                </tr>
+                    
+                        </ng-template>
+                    </p-dataView>
+                    </table>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<p-dialog #dialogDown (onShow)="utils.DesacScroll(dialogDown);crearRolPopCuerp=true;"
+          (onHide)="utils.ActScroll();hideRolCuerp();" [responsive]=true
+          styleClass="ui-dialogDown" [transitionOptions]="'280ms'"
+          [modal]=true [blockScroll]=true [focusOnShow]=false [resizable]=false [closable]="true"
+          [draggable]=false [(visible)]="crearRolPop">
+    <p-header>
+        <div class="tcenter widthtit inline" *ngIf="crearRolPopCuerp">{{titulo}}</div>
+    </p-header>
+    <div class="minheight50">
+        <div class="contenwhitebot" >
+                <form [formGroup]="regCrealRol" autocomplete="off" >
+                        <div class="p-md-4">
+                            <mat-form-field 
+                                            [ngClass]="{ 'ng-invalid mat-form-field-invalid': submittedCrearRol && formCrearRol.nombreRol.errors }">
+                                <input matInput type="text" formControlName="nombreRol"
+                                    autocomplete="off"
+                                    autocorrect="off" [maxLength]="40" spellcheck="false"
+                                    placeholder="Nombre Rol"
+                                    class=" ui-inputtext ui-inputcust ui-widget ui-input ui-inputdob">
+                            </mat-form-field> 
+                        </div>
+                        <div class="p-md-4">
+                                <mat-form-field 
+                                                [ngClass]="{ 'ng-invalid mat-form-field-invalid': submittedCrearRol && formCrearRol.descripcionRol.errors }">
+                                    <textarea matInput type="text" formControlName="descripcionRol"
+                                        autocomplete="off"
+                                        autocorrect="off" [maxLength]="40" spellcheck="false"
+                                        placeholder="Descripción Rol"
+                                        class=" ui-inputtext ui-inputcust ui-widget ui-input ui-inputdob">
+                                    </textarea>
+                                </mat-form-field> 
+                        </div>
+                        <div class="p-md-4">
+                                <mat-form-field 
+                                                [ngClass]="{ 'ng-invalid mat-form-field-invalid': submittedCrearRol && formCrearRol.estadoRol.errors }">
+                                    <input matInput type="text" formControlName="estadoRol"
+                                        autocomplete="off"
+                                        autocorrect="off" [maxLength]="40" spellcheck="false"
+                                        placeholder="Estado Rol"
+                                        class=" ui-inputtext ui-inputcust ui-widget ui-input ui-inputdob">
+                                </mat-form-field> 
+                         </div>
+                            <div class="divcenter">
+                            <button (click)="submitEditarCrearRol()"
+                                class="ui-button ui-widget ui-corner-all ui-button-text-only ui-button-padding ui-buttongray">{{titulo}}</button>
+                            </div>
+                </form>   
+        </div>
+    </div>
+    <p-footer>
+    </p-footer>
+</p-dialog>

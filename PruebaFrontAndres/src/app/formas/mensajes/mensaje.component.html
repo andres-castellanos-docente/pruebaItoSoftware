@@ -1,0 +1,38 @@
+﻿<div class="content-sectionpadlow marginauto">
+    <div class="marginauto " [@subirAnimationWait]>
+        <div class="marginauto contenwhitebot boxs">
+            <div class="marginauto mensajes">
+                <div>
+                    <h3>{{ 'mens.Mensajes' | translate }}</h3>
+                     <form [formGroup]="regCrearMensaje" autocomplete="off" >
+                            <div class="p-md-4">
+                                <mat-form-field 
+                                                [ngClass]="{ 'ng-invalid mat-form-field-invalid': submittedCrearMensaje && formCrearMensaje.destinatarioId.errors }">
+                                    <input matInput type="text" formControlName="destinatarioId"
+                                        autocomplete="off"
+                                        autocorrect="off" [maxLength]="40" spellcheck="false"
+                                        placeholder="Id Destinatario"
+                                        class=" ui-inputtext ui-inputcust ui-widget ui-input ui-inputdob">
+                                </mat-form-field> 
+                            </div>
+                            <div class="p-md-4">
+                                    <mat-form-field 
+                                                    [ngClass]="{ 'ng-invalid mat-form-field-invalid': submittedCrearMensaje && formCrearMensaje.mensaje.errors }">
+                                        <textarea matInput type="text" formControlName="mensaje"
+                                            autocomplete="off"
+                                            autocorrect="off" [maxLength]="40" spellcheck="false"
+                                            placeholder="Mensaje"
+                                            class=" ui-inputtext ui-inputcust ui-widget ui-input ui-inputdob">
+                                        </textarea>
+                                    </mat-form-field> 
+                            </div>
+                                <div class="divcenter">
+                                <button (click)="submitCrearMensaje()"
+                                    class="ui-button ui-widget ui-corner-all ui-button-text-only ui-button-padding ui-buttongray">Crear Mensaje</button>
+                                </div>
+                    </form>   
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
