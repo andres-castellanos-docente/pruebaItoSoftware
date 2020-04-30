@@ -38,7 +38,7 @@
         "moment": "2.24.0",
         "@types/node": "12.7.3",
         "codelyzer": "5.1.0",
-        "jquery": "3.4.1",
+        "jquery": "3.5.0",
         "primeng": "8.0.2",
         "primeicons": "2.0.0",
         "protractor": "5.4.2",
